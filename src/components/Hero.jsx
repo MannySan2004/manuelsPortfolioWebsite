@@ -85,9 +85,6 @@ export default function Hero() {
                 onError={(e) => { e.currentTarget.style.display = 'none' }}
                 className="h-full w-full object-cover transition-transform duration-700 ease-apple group-hover:scale-105"
               />
-              <div className="pointer-events-none absolute inset-0 grid place-items-center text-7xl font-bold text-brand-500/40">
-                {SITE.name.split(' ').map((w) => w[0]).join('')}
-              </div>
             </div>
           </div>
         </motion.div>

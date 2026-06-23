@@ -1,11 +1,11 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Talks to the Cloudflare Pages Functions backend (functions/api/*).
-// Until R2 + D1 are wired up, GET /api/photos simply isn't there yet, so the
-// gallery falls back to a few sample images so the page still looks complete.
+// The gallery is read-only: photos are added by dropping images into the R2
+// bucket via the Cloudflare dashboard. GET /api/photos lists the bucket.
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Sample photos used only when the backend API isn't available yet.
-// (Replace by uploading your real photos from the /admin page once deployed.)
+// Sample photos used only when the bucket is still empty, so the page is never
+// blank. They disappear automatically once you upload your first real photo.
 export const SAMPLE_PHOTOS = [
   { id: 's1', url: 'https://picsum.photos/seed/tokyo/800/1100', caption: 'Tokyo', category: 'Travel' },
   { id: 's2', url: 'https://picsum.photos/seed/deer/800/600', caption: 'Nara deer', category: 'Wildlife' },
@@ -27,29 +27,7 @@ export async function fetchPhotos() {
     if (!photos.length) return { photos: SAMPLE_PHOTOS, isSample: true }
     return { photos, isSample: false }
   } catch {
-    // Backend not deployed yet — show samples so the page is never empty.
+    // Backend unreachable — show samples so the page is never empty.
     return { photos: SAMPLE_PHOTOS, isSample: true }
   }
-}
-
-/** Upload a resized photo blob (admin only — gated by Cloudflare Access). */
-export async function uploadPhoto({ blob, caption, category }) {
-  const form = new FormData()
-  form.append('file', blob, 'photo.webp')
-  form.append('caption', caption || '')
-  form.append('category', category || '')
-  const res = await fetch('/api/upload', { method: 'POST', body: form })
-  if (!res.ok) throw new Error(`Upload failed (HTTP ${res.status})`)
-  return res.json()
-}
-
-/** Delete a photo by id (admin only — gated by Cloudflare Access). */
-export async function deletePhoto(id) {
-  const res = await fetch('/api/delete', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ id }),
-  })
-  if (!res.ok) throw new Error(`Delete failed (HTTP ${res.status})`)
-  return res.json()
 }

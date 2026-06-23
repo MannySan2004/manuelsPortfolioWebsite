@@ -2,26 +2,9 @@ name = "manuels-portfolio"
 compatibility_date = "2024-09-01"
 pages_build_output_dir = "dist"
 
-# ── Database that indexes your photos ────────────────────────────────────────
-# Create with:  npx wrangler d1 create portfolio-photos
-# then paste the printed database_id below.
-[[d1_databases]]
-binding = "DB"
-database_name = "portfolio-photos"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
-
-# ── Object storage that holds the actual image files ─────────────────────────
-# Create with:  npx wrangler r2 bucket create portfolio-photos
+# ── Object storage that holds the photo files ────────────────────────────────
+# The gallery lists this bucket directly (functions/api/photos.js). Add photos
+# by dropping images into the bucket via the Cloudflare dashboard.
 [[r2_buckets]]
 binding = "PHOTOS_BUCKET"
 bucket_name = "portfolio-photos"
-
-# ── Cloudflare Access settings (admin gate) ──────────────────────────────────
-# Set these to enable JWT verification on the upload/delete endpoints.
-#   ACCESS_TEAM_DOMAIN = your team subdomain, e.g. "manny" for manny.cloudflareaccess.com
-#   ACCESS_AUD         = the Application Audience (AUD) tag from your Access app
-[vars]
-ACCESS_TEAM_DOMAIN = ""
-ACCESS_AUD = ""
-# ADMIN_TOKEN is a SECRET — do NOT put it here. Set it with:
-#   npx wrangler pages secret put ADMIN_TOKEN

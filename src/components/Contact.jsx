@@ -1,6 +1,6 @@
 import { Reveal } from '../lib/motion.jsx'
 import SocialLinks from './SocialLinks.jsx'
-import { MailIcon, DownloadIcon } from './icons.jsx'
+import { DownloadIcon } from './icons.jsx'
 import { SITE } from '../data/site.js'
 
 export default function Contact() {
@@ -15,18 +15,10 @@ export default function Contact() {
             Let&rsquo;s build something together.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">
-            Whether it&rsquo;s an opportunity, a collaboration, or just to talk cloud, security, or photography — my inbox is open.
+            Whether it&rsquo;s an opportunity, a collaboration, or just to talk cloud, security, or photography — let&rsquo;s connect on LinkedIn.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href={`mailto:${SITE.email}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3
-                         text-sm font-semibold text-brand-700 shadow-sm transition-all duration-300 ease-apple
-                         hover:-translate-y-0.5 hover:shadow-lg active:scale-95"
-            >
-              <MailIcon className="h-4 w-4" /> Say hello
-            </a>
             <a
               href={SITE.resumePath}
               download

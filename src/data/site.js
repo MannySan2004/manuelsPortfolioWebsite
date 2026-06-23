@@ -9,10 +9,9 @@ export const SITE = {
   location: 'Seattle, WA',
   // Short tagline shown under the hero heading.
   tagline:
-    'A University of Washington IT graduate and AWS-certified cloud & AI/ML engineer, on a mission to use AI and the cloud to improve technological connectivity in the Philippines.',
+    'A University of Washington IT graduate and AWS-certified cloud & AI/ML engineer, on a mission to use AI and the cloud to improve technological underserved regions.',
 
   // Links
-  email: '',
   github: 'https://github.com/MannySan2004',
   linkedin: 'https://www.linkedin.com/in/manuel-rosales-2c/',
 

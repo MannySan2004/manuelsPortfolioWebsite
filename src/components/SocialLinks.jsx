@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedinIcon, MailIcon } from './icons.jsx'
+import { GithubIcon, LinkedinIcon } from './icons.jsx'
 import { SITE } from '../data/site.js'
 
 export default function SocialLinks({ size = 'md' }) {
@@ -8,7 +8,6 @@ export default function SocialLinks({ size = 'md' }) {
   const links = [
     { href: SITE.github, label: 'GitHub', Icon: GithubIcon },
     { href: SITE.linkedin, label: 'LinkedIn', Icon: LinkedinIcon },
-    { href: `mailto:${SITE.email}`, label: 'Email', Icon: MailIcon },
   ]
 
   return (
