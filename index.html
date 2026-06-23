@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Manuel Rosales — Portfolio</title>
+    <meta
+      name="description"
+      content="Manuel Rosales — University of Washington Tacoma student in cloud engineering & cybersecurity, classically trained clarinetist, and photographer. Projects, experience timeline, and photography portfolio."
+    />
+
+    <!-- Open Graph / social link previews -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Manuel Rosales — Portfolio" />
+    <meta
+      property="og:description"
+      content="Cloud engineering & cybersecurity student, clarinetist, and photographer. See my experience timeline, projects, and photography."
+    />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts (Inter — a clean, professional SF-Pro-like face) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Set theme before paint to avoid a flash of the wrong color scheme -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && systemDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

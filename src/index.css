@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset anchored sections so the sticky nav doesn't cover their headings */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+body {
+  @apply bg-mist text-ink antialiased dark:bg-midnight dark:text-mist;
+  /* Apple-style smooth color crossfade when switching light/dark */
+  transition: background-color 0.45s ease, color 0.45s ease;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+/* Respect users who prefer reduced motion: kill animations + smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  /* Translucent, blurred surface — the Apple nav look */
+  .glass {
+    @apply backdrop-blur-xl backdrop-saturate-150 bg-mist/70 dark:bg-midnight/60;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3
+           text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-apple
+           hover:bg-brand-500 hover:shadow-lg hover:shadow-brand-600/25
+           focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+           focus-visible:outline-brand-500 active:scale-[0.97];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-black/10
+           px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 ease-apple
+           hover:border-brand-500/60 hover:text-brand-700 active:scale-[0.97]
+           dark:border-white/15 dark:text-mist dark:hover:border-brand-400/60 dark:hover:text-brand-300;
+  }
+
+  .card {
+    @apply rounded-3xl border border-black/5 bg-white shadow-sm
+           dark:border-white/10 dark:bg-slatecard;
+  }
+
+  .section-eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.2em] text-brand-600 dark:text-brand-400;
+  }
+
+  .section-title {
+    @apply mt-3 text-4xl font-bold tracking-tight sm:text-5xl;
+  }
+}
+
+/* Subtle custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-black/15 dark:bg-white/15;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-black/25 dark:bg-white/25;
+}
