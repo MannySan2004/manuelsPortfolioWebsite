@@ -14,6 +14,7 @@ export const SITE = {
   // Links
   github: 'https://github.com/MannySan2004',
   linkedin: 'https://www.linkedin.com/in/manuel-rosales-2c/',
+  hackerrank: 'https://www.hackerrank.com/profile/rosalesman328',
 
   // Résumé served from /public. Swap to a .pdf here if you export one later.
   resumePath: '/Manuel-Rosales-Resume.docx',
